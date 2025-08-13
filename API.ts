@@ -5,8 +5,7 @@ const webURL = "https://soundcloud.com"
 export class API {
     public static headers: Record<string, string> = {
         Origin: "https://soundcloud.com",
-        Referer: "https://soundcloud.com/",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.67"
+        Referer: "https://soundcloud.com/"
     }
     public clientId?: string
     public oauthToken?: string
@@ -27,13 +26,15 @@ export class API {
     public getV2 = (endpoint: string, params?: Record<string, any>) => this.getRequest(apiV2URL, endpoint, params)
     public getWebsite = (endpoint: string, params?: Record<string, any>) => this.getRequest(webURL, endpoint, params)
     public getURL = (URI: string, params?: Record<string, any>) => this.fetchRequest(URI, "GET", params)
-    public post = (endpoint: string, params?: Record<string, any>) => this.fetchRequest(`${apiURL}/${endpoint}`, "POST", params)
+    public post = (endpoint: string, params?: Record<string, any>) => this.fetchRequest(`${apiV2URL}/${endpoint}`, "POST", params)
+    public put = (endpoint: string, params?: Record<string, any>) => this.fetchRequest(`${apiV2URL}/${endpoint}`, "PUT", params)
+    public delete = (endpoint: string, params?: Record<string, any>) => this.fetchRequest(`${apiV2URL}/${endpoint}`, "DELETE", params)
 
     private options = (method: string, params?: Record<string, any>): RequestInit => {
         const options: RequestInit = {
             method,
-            headers: {...API.headers},
-            redirect: "follow"
+            redirect: "follow",
+            headers: { ...API.headers }
         }
         if (method === "POST" && params) options.body = JSON.stringify(params)
         return options
@@ -76,7 +77,7 @@ export class API {
 
     public getClientIdMobile = async (): Promise<string> => {
         const response = await fetch("https://m.soundcloud.com/", {
-            headers: {"User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/99.0.4844.47 Mobile/15E148 Safari/604.1"}
+            headers: { "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/99.0.4844.47 Mobile/15E148 Safari/604.1" }
         }).then(r => r.text())
         const clientId = response.match(/"clientId":"(\w+?)"/)?.[1]
         if (clientId) return clientId
