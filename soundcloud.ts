@@ -1,5 +1,6 @@
-import {API} from "./API"
-import {Apps, Comments, Me, Oembed, Playlists, Resolve, Tracks, Users, Util} from "./entities"
+import { API } from "./API"
+import { Apps, Comments, Me, Oembed, Playlists, Resolve, Tracks, Users, Util } from "./entities"
+import { Queries } from "./entities/Queries"
 
 /**
  * The main class for interacting with the Soundcloud API.
@@ -18,7 +19,8 @@ export class Soundcloud {
     public tracks = new Tracks(this.api)
     public users = new Users(this.api)
     public util = new Util(this.api)
-    public constructor(clientId?: string, oauthToken?: string, options?: {proxy?: string}) {
+    public queries = new Queries(this.api)
+    public constructor(clientId?: string, oauthToken?: string, options?: { proxy?: string }) {
         if (clientId) {
             Soundcloud.clientId = clientId
             if (oauthToken) Soundcloud.oauthToken = oauthToken
@@ -34,6 +36,7 @@ export class Soundcloud {
         this.tracks = new Tracks(this.api)
         this.users = new Users(this.api)
         this.util = new Util(this.api)
+        this.queries = new Queries(this.api)
     }
 }
 
