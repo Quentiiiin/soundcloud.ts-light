@@ -1,20 +1,27 @@
 {
-    "name": "soundcloud.ts",
+    "name": "soundcloud.ts-light",
     "version": "0.6.5",
-    "description": "Soundcloud API v2 wrapper with typings.",
-    "main": "dist/soundcloud.js",
-    "types": "dist/soundcloud.d.ts",
-    "scripts": {
-        "start": "tsc && node dist/start.js",
-        "docs": "typedoc",
-        "build": "tsc",
-        "test": "ts-mocha --timeout 30000 -p tsconfig.json test/**/*.spec.ts",
-        "prepack": "npm run build"
-    },
+    "author": "Moebits",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Moebits/soundcloud.ts"
+        "url": "https://github.com/Quentiiiin/soundcloud.ts-light"
     },
+    "main": "dist/soundcloud.js",
+    "devDependencies": {
+        "@types/chai": "^4.3.16",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "^20.12.12",
+        "chai": "^4.4.1",
+        "dotenv": "^16.4.5",
+        "mocha": "^10.4.0",
+        "ts-mocha": "^10.0.0",
+        "typedoc": "^0.25.13",
+        "typescript": "^5.4.5"
+    },
+    "contributors": [
+        "Skick (https://github.com/skick1234)"
+    ],
+    "description": "Soundcloud API v2 wrapper with typings. Forked to be used with react native",
     "keywords": [
         "soundcloud",
         "typescript",
@@ -27,20 +34,13 @@
         "download",
         "downloader"
     ],
-    "author": "Moebits",
-    "contributors": [
-        "Skick (https://github.com/skick1234)"
-    ],
     "license": "MIT",
-    "devDependencies": {
-        "@types/chai": "^4.3.16",
-        "@types/mocha": "^10.0.6",
-        "@types/node": "^20.12.12",
-        "chai": "^4.4.1",
-        "dotenv": "^16.4.5",
-        "mocha": "^10.4.0",
-        "ts-mocha": "^10.0.0",
-        "typedoc": "^0.25.13",
-        "typescript": "^5.4.5"
-    }
+    "scripts": {
+        "start": "tsc && node dist/start.js",
+        "docs": "typedoc",
+        "build": "tsc",
+        "test": "ts-mocha --timeout 30000 -p tsconfig.json test/**/*.spec.ts",
+        "prepack": "npm run build"
+    },
+    "types": "dist/soundcloud.d.ts"
 }
