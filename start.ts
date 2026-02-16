@@ -1,8 +1,10 @@
-import SoundCloud from "./soundcloud"
+import SoundCloud from "./soundcloud";
 
-require("dotenv").config()
+require("dotenv").config();
 const soundcloud = new SoundCloud();
 (async () => {
-    const result = await soundcloud.util.getTrackStreamUrl("https://soundcloud.com/5tereomanjpn/aire-tea-timestereoman-remix")
-    console.log(result)
-})()
+  const result = await soundcloud.util.getTrackStreamUrl(
+    "https://soundcloud.com/5tereomanjpn/aire-tea-timestereoman-remix",
+  );
+  console.log(result);
+})();
